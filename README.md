@@ -37,8 +37,6 @@ Home page allows user to click on specific Team choice | Team A, Team B | Team A
 
 * Spark
 
-*
-
 <p align="center">
   <img src="img/java.jpg="350"/>
   <img src="img/java.jpg" width="350"/>
