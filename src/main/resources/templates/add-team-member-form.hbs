@@ -1,0 +1,50 @@
+{{#partial "content"}}
+
+    {{#if editPost}}
+        <h1>Edit this List!</h1>
+        <form action="/posts/{{editPost.id}}/update" method="post">
+            Edit your List!
+            <div class=form-group">
+                <label for="item1">First name:</label>
+                <input id="item1" name="item1" type="text" value="{{editPost.raccoon}}" >
+            </div>
+            <div class="form-group">
+                <label for="item2">Last name:</label>
+                <input id="item2" name="item2" type="text" value="{{editPost.raccoon}}" >
+            </div>
+            <div class=form-group">
+                <label for="item3">Team name:</label>
+                <input id="item3" name="item3" type="text" value="{{editPost.raccoon}}" >
+            </div>
+            <div class=form-group">
+                <label for="item4">Preferred programming language:</label>
+                <input id="item4" name="item4" type="text" value="{{editPost.raccoon}}" >
+            </div>
+        </form>
+    {{else}}
+    <h1>Add a new List!</h1>
+    <form action="/item/new" method="post">
+        <div class=form-group">
+            <label for="item1">First Name:</label>
+            <input id="item1" name="item1" type="text">
+        </div>
+        <div class="form-group">
+            <label for="item2">Last Name:</label>
+            <input id="item2" name="item2" type="text">
+        </div>
+        <div class=form-group">
+            <label for="item3">Team Name:</label>
+            <input id="item3" name="item3" type="text">
+        </div>
+        <div class=form-group">
+            <label for="item4">Preferred programming language:</label>
+            <input id="item4" name="item4" type="text">
+        </div>
+        <div>
+    {{/if}}
+            <button type="submit" class="btn btn-success">Add a Member</button>
+        </div>
+    </form>
+{{/partial}}
+
+{{> layout.hbs}}
