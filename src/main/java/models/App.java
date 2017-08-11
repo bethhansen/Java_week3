@@ -1,8 +1,9 @@
+package models;
+
 import static spark.Spark.staticFileLocation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import models.Team;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 import static spark.Spark.*;
@@ -40,16 +41,13 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show an individual post
-        get("/team/:id", (request, response) -> {
+        get("/Users/Guest/IdeaProjects/java-week-3/src/main/resources/templates/team-member-detail.hbs", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfTeamToFind = Integer.parseInt(request.params("id")); //pull id - must match route segment
             Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
             model.put("team", foundTeam); //add it to model for template to display
-            return new ModelAndView(model, "team-member.hbs"); //individual post page.
+            return new ModelAndView(model, "team-member-detail.hbs"); //individual post page.
         }, new HandlebarsTemplateEngine());
-
-        System.out.println(request.queryParams());
-
 
 
     }

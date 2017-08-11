@@ -46,7 +46,7 @@ public class Team {
     }
 
     // test-clear-all-method//
-    public static void clearAllPosts(){
+    public static void clearAllTeams(){
         memberList.clear();
 
     }
