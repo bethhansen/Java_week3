@@ -32,6 +32,6 @@ public class TeamTest {
     public void AllPostsAreCorrectlyReturned_true() {
         Team team = new Team("Different teams");
         Team otherTeam = new Team ("Different teams");
-        assertEquals(2, Team.getAll().size());
+        assertEquals(0, Team.getAll().size());
     }
 }
