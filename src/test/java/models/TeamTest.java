@@ -17,14 +17,21 @@ public class TeamTest {
     }
 
     @Test
-    public void NewPostObjectGetsCorrectlyCreated_true() throws Exception {
+    public void NewTeamObjectGetsCorrectlyCreated_true() throws Exception {
         Team team = new Team("testing");
         assertEquals(true, team instanceof Team);
     }
 
     @Test
-    public void PostInstantiatesWithContent_true() throws Exception {
+    public void TeamInstantiatesWithContent_true() throws Exception {
         Team team = new Team("testing");
         assertEquals("testing", team.getContent());
+    }
+
+    @Test
+    public void AllPostsAreCorrectlyReturned_true() {
+        Team team = new Team("Different teams");
+        Team otherTeam = new Team ("Different teams");
+        assertEquals(2, Team.getAll().size());
     }
 }
