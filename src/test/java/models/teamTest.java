@@ -34,7 +34,7 @@ public class teamTest {
     public void AllTeamPlayersAreCorrectlyReturned_true() {
         Team team = setupNewTeam();
         Team team2 = setupNewTeam2();
-        assertEquals(4, Team.getAll().size());
+        assertEquals(5, Team.getAll().size());
     }
 
     @Test
@@ -44,10 +44,13 @@ public class teamTest {
     }
 
     @Test
-    public void findReturnsCorrectPost() throws Exception {
+    public void updateChangesPostContent() throws Exception {
         Team team = setupNewTeam();
-        assertEquals(2, Team.findById(team.getId()).getId());
+        team.update("Alice", "Ava", "Beth", "Angel");
+        assertEquals("Ava" , team.getMember2());
+
     }
+
     @Test
     public void getId_postsInstantiateWithAnID_1() throws Exception {
         Team.clearAllPosts();
@@ -55,5 +58,9 @@ public class teamTest {
         assertEquals(1, team.getId());
     }
 
-
+    @Test
+    public void findReturnsCorrectPost() throws Exception {
+        Team team = setupNewTeam();
+        assertEquals(3, Team.findById(team.getId()).getId());
+    }
 }
