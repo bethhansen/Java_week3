@@ -33,34 +33,36 @@ public class Team {
         this.member4 = member4;
     }
 
+
+    // find by the id //
     public static Team findById(int id){
         return memberList.get(id-1);
     }
 
+
+    // get all of the array list
     public static ArrayList<Team> getAll() {
         return memberList;
     }
 
     // test-clear-all-method//
-
     public static void clearAllPosts(){
         memberList.clear();
+
     }
-    //                     //
 
 
     public boolean getPublished(){
         return this.published;
     }
 
+    // get by id
     public int getId() {
         return id;
     }
 
     /// getter methods ///
-    //////////////////////
-
-    public String getMember1() {
+     public String getMember1() {
         return member1;
     }
     public String getMember2() {
@@ -75,24 +77,5 @@ public class Team {
     public static ArrayList<Team> getMemberList() {
         return memberList;
     }
-    ////////////////////////
-    ////////////////////////
+  }
 
-
-
-
-//    private final String content;
-//    private static ArrayList<Team> instances = new ArrayList<>();
-//
-//    public Team(String content){
-//        this.content = content;
-//    }
-//
-//    public String getContent() {
-//        return content;
-//    }
-//
-//    public static ArrayList<Team> getAll(){
-//        return instances;
-//    }
-}

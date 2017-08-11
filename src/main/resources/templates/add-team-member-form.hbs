@@ -1,44 +1,44 @@
 {{#partial "content"}}
 
-    {{#if editPost}}
+    {{#if editTeam}}
         <h1>Edit this List!</h1>
-        <form action="/posts/{{editPost.id}}/update" method="post">
+        <form action="/teams/{{editPost.id}}/update" method="team">
             Edit your List!
             <div class=form-group">
-                <label for="item1">First name:</label>
-                <input id="item1" name="item1" type="text" value="{{editPost.raccoon}}" >
+                <label for="member1">First name:</label>
+                <input id="member1" name="member1" type="text" value="{{editTeam.raccoon}}" >
             </div>
             <div class="form-group">
-                <label for="item2">Last name:</label>
-                <input id="item2" name="item2" type="text" value="{{editPost.raccoon}}" >
+                <label for="member2">Last name:</label>
+                <input id="member2" name="member2" type="text" value="{{editTeam.raccoon}}" >
             </div>
             <div class=form-group">
-                <label for="item3">Team name:</label>
-                <input id="item3" name="item3" type="text" value="{{editPost.raccoon}}" >
+                <label for="member3">Team name:</label>
+                <input id="member3" name="member3" type="text" value="{{editTeam.raccoon}}" >
             </div>
             <div class=form-group">
-                <label for="item4">Preferred programming language:</label>
-                <input id="item4" name="item4" type="text" value="{{editPost.raccoon}}" >
+                <label for="member4">Preferred programming language:</label>
+                <input id="member4" name="member4" type="text" value="{{editTeam.raccoon}}" >
             </div>
         </form>
     {{else}}
     <h1>Add a new List!</h1>
-    <form action="/item/new" method="post">
+    <form action="/member/new" method="team">
         <div class=form-group">
-            <label for="item1">First Name:</label>
-            <input id="item1" name="item1" type="text">
+            <label for="member1">First Name:</label>
+            <input id="member1" name="member1" type="text">
         </div>
         <div class="form-group">
-            <label for="item2">Last Name:</label>
-            <input id="item2" name="item2" type="text">
+            <label for="member2">Last Name:</label>
+            <input id="member2" name="member2" type="text">
         </div>
         <div class=form-group">
-            <label for="item3">Team Name:</label>
-            <input id="item3" name="item3" type="text">
+            <label for="member3">Team Name:</label>
+            <input id="member3" name="member3" type="text">
         </div>
         <div class=form-group">
-            <label for="item4">Preferred programming language:</label>
-            <input id="item4" name="item4" type="text">
+            <label for="member4">Preferred programming language:</label>
+            <input id="member4" name="member4" type="text">
         </div>
         <div>
     {{/if}}
