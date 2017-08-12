@@ -16,16 +16,50 @@ public class App {
     public static void main(String[] args) {
        staticFileLocation("/public");
 
-        // SHOW ALL POSTS (index) fixed
-        get("/", (request, response) -> {
+        // INDEX fixed
+        get("/", (request, response) -> { //request for route happens at this location
+            Map<String, Object> model = new HashMap<String, Object>(); // new model is made to store information
+            return new ModelAndView(model, "index.hbs"); // assemble individual pieces and render
+        }, new HandlebarsTemplateEngine()); //
+
+        //LAYOUT fixed
+        get("/favorite_photos", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            ArrayList<Team> allTeams = Team.getAll();
-            model.put("allTeams", allTeams);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "favorite_photos.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //FORM fixed
+        get("/form", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            return new ModelAndView(model, "add-team-member-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //SUCCESS fixed
+        get("/posts/:id", (req,res)->{
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
 
 
 
+        get("/posts/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToFind = Integer.parseInt(request.params("id")); //pull id - must match route segment
+            Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
+            model.put("team", foundTeam); //add it to model for template to display
+            return new ModelAndView(model, "success.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
+
+
+        //TEAM MEMBER DETAIL fixed
+        get("/teams/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfTeamToFind = Integer.parseInt(request.params("id")); //pull id - must match route segment
+            Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
+            model.put("team", foundTeam); //add it to model for template to display
+            return new ModelAndView(model, "team-member-detail.hbs"); //individual post page.
+        }, new HandlebarsTemplateEngine());
 
         //success
 //        post("/posts/new", (req,res)->{
@@ -35,20 +69,6 @@ public class App {
 //            model.put("team",team);
 //            return new ModelAndView(model,"success.hbs");
 //        }, new HandlebarsTemplateEngine());
-
-
-        //TEAM MEMBER FORM fixed
-        get("/posts/new", (request, response) -> { // try memberList allTeams
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "add-team-member-form.hbs");
-        }, new HandlebarsTemplateEngine());
-
-
-        //SUCCESS
-        get("/posts/:id", (req,res)->{
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "success.hbs");
-        }, new HandlebarsTemplateEngine());
 
 
         //SUCCESS
@@ -70,23 +90,16 @@ public class App {
 //            return new ModelAndView(model, "success.hbs");
 //        }, new HandlebarsTemplateEngine();
 
-        get("/posts/:id", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfTeamToFind = Integer.parseInt(request.params("id")); //pull id - must match route segment
-            Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
-            model.put("team", foundTeam); //add it to model for template to display
-            return new ModelAndView(model, "success.hbs"); //individual post page.
-        }, new HandlebarsTemplateEngine());
 
+        //success
+//        post("/posts/new", (req,res)->{
+//            Map<String, Object> model = new HashMap<>();
+//            String teamName = req.queryParams("team-name");
+//            Team team = new Team(allTeams);
+//            model.put("team",team);
+//            return new ModelAndView(model,"success.hbs");
+//        }, new HandlebarsTemplateEngine());
 
-        //TEAM MEMBER DETAIL fixed
-        get("/teams/:id", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            int idOfTeamToFind = Integer.parseInt(request.params("id")); //pull id - must match route segment
-            Team foundTeam = Team.findById(idOfTeamToFind); //use it to find post
-            model.put("team", foundTeam); //add it to model for template to display
-            return new ModelAndView(model, "team-member-detail.hbs"); //individual post page.
-        }, new HandlebarsTemplateEngine());
 
 
     }
