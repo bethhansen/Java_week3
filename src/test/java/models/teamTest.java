@@ -53,7 +53,7 @@ public class teamTest {
 
     @Test
     public void getId_postsInstantiateWithAnID_1() throws Exception {
-        Team.clearAllPosts();
+        Team.clearAllTeams();
         Team team = setupNewTeam();
         assertEquals(1, team.getId());
     }

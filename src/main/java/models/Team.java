@@ -1,5 +1,7 @@
 package models;
 
+import spark.route.HttpMethod;
+
 import java.util.ArrayList;
 
 
@@ -22,6 +24,7 @@ public class Team {
         memberList.add(this);
         this.id = memberList.size();
     }
+
 
     public ArrayList<Team> getContent(){
         return memberList;
@@ -77,5 +80,7 @@ public class Team {
     public static ArrayList<Team> getMemberList() {
         return memberList;
     }
-  }
+
+
+}
 
