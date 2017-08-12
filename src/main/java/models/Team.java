@@ -1,6 +1,5 @@
 package models;
 
-import spark.route.HttpMethod;
 
 import java.util.ArrayList;
 
@@ -10,47 +9,52 @@ public class Team {
     private String member1;
     private String member2;
     private String member3;
-    private String member4;
     private int id;
     private boolean published;
-    private static ArrayList<Team> memberList = new ArrayList<>();
+    private static ArrayList<Team> allMembers = new ArrayList<>();
 
-    public Team(String member1, String member2, String member3, String member4){
-        this.member1 =member1;
+    public Team(String member1, String member2, String member3){
+        this.member1 = member1;
         this.member2 = member2;
         this.member3 = member3;
-        this.member4 = member4;
         this.published = false;
-        memberList.add(this);
-        this.id = memberList.size();
+        allMembers.add(this);
+        this.id = allMembers.size();
+    }
+
+    public Team() {
+        member1 = member1;
+        member2 = member2;
+        member3 = member3;
     }
 
 
     public ArrayList<Team> getContent(){
-        return memberList;
+        return allMembers;
     }
-    public void update(String member1, String member2, String member3, String member4){
+    public void update(String member1, String member2, String member3){
         this.member1 = member1;
         this.member2 = member2;
         this.member3 = member3;
-        this.member4 = member4;
     }
 
 
     // find by the id //
     public static Team findById(int id){
-        return memberList.get(id-1);
+        return allMembers.get(id-1);
     }
-
+    public static Team findTeamById(int id) {
+        return allMembers.get(id-1);
+    }
 
     // get all of the array list
     public static ArrayList<Team> getAll() {
-        return memberList;
+            return allMembers;
     }
 
     // test-clear-all-method//
     public static void clearAllTeams(){
-        memberList.clear();
+        allMembers.clear();
 
     }
 
@@ -74,13 +78,24 @@ public class Team {
     public String getMember3() {
         return member3;
     }
-    public String getMember4() {
-        return member4;
-    }
     public static ArrayList<Team> getMemberList() {
-        return memberList;
+        return allMembers;
     }
 
 
+    public static ArrayList<Team> allMembers() {
+        return allMembers;
+    }
+
+
+
+    public void setMember(String member) {
+        this.member1 = member;
+    }
+
+//    public void addMember(String member) {
+//        String newMember = member1;
+//        allMembers.add(member1);
+//    }
 }
 
