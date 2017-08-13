@@ -1,24 +1,15 @@
 {{#partial "content"}}
 
-    <h1>Team Players!</h1>
+   <h1>Team list!</h1>
 
-
-    {{#if Posts}}
-
-        {{#each Posts}}
-            <ul>
-
-                <li>Member 1: {{ member1 }} </li>
-                <li>Member 2: {{ member2 }} </li>
-                <li>Member 3: {{ member3 }} </li>
-                <p>{{ raccoon }} <a href="/posts/{{id}}">see more players...</a></p>
-            </ul>
-        {{/each}}
-    {{else}}
-        <p>No members added!</p>
-    {{/if}}
-
-
+   {{#if posts}}
+       {{#each posts }} <!--loop-->
+        <p>Team:</p>
+        <p>{{ content }}<a href="/posts/{{id}}">read more...</a></p>
+               {{/each}}
+   {{else}} <!--no posts!-->
+    <p>See the teams!</p>
+   {{/if}}
 
 {{/partial}}
 
