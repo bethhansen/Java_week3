@@ -1,101 +1,82 @@
 package models;
-
+import java.time.LocalDateTime;
 
 import java.util.ArrayList;
 
-
+/**
+ * Created by Guest on 8/8/17.
+ */
 public class Team {
-
+    private String teamName;
+    private String teamDescription;
     private String member1;
     private String member2;
     private String member3;
-    private int id;
+    private String member4;
+    private static ArrayList<Team> instances = new ArrayList<>();
     private boolean published;
-    private static ArrayList<Team> allMembers = new ArrayList<>();
+    private LocalDateTime createdAt;
+    private int id;
 
-    public Team(String member1, String member2, String member3){
+    public Team(String teamName, String teamDescription, String member1, String member2, String member3, String member4) {
+        this.teamName = teamName;
+        this.teamDescription= teamDescription;
         this.member1 = member1;
         this.member2 = member2;
         this.member3 = member3;
+        this.member4 = member4;
         this.published = false;
-        allMembers.add(this);
-        this.id = allMembers.size();
-    }
-
-    public Team() {
-        member1 = member1;
-        member2 = member2;
-        member3 = member3;
+        this.createdAt = LocalDateTime.now();
+        instances.add(this);
+        this.id = instances.size();
     }
 
 
-    public ArrayList<Team> getContent(){
-        return allMembers;
-    }
-    public void update(String member1, String member2, String member3){
-        this.member1 = member1;
-        this.member2 = member2;
-        this.member3 = member3;
+    public static ArrayList<Team> getAll(){
+        return instances;
     }
 
-
-    // find by the id //
-    public static Team findById(int id){
-        return allMembers.get(id-1);
-    }
-    public static Team findTeamById(int id) {
-        return allMembers.get(id-1);
+    public String getTeamName(){
+        return teamName;
     }
 
-    // get all of the array list
-    public static ArrayList<Team> getAll() {
-            return allMembers;
+    public String getTeamDescription() {
+        return teamDescription;
     }
 
-    // test-clear-all-method//
-    public static void clearAllTeams(){
-        allMembers.clear();
-
+    public String getTeamMember1() {
+        return member1;
     }
 
+    public String getTeamMember2() {
+        return member2;
+    }
+
+    public String getTeamMember3() {
+        return member3;
+    }
+
+    public String getTeamMember4() {
+        return member4;
+    }
+
+    public static void clearAllPosts(){
+        instances.clear();
+    }
 
     public boolean getPublished(){
         return this.published;
     }
-
-    // get by id
+    public LocalDateTime getCreatedAt() {
+        return  createdAt;
+    }
     public int getId() {
         return id;
     }
-
-    /// getter methods ///
-     public String getMember1() {
-        return member1;
+    public static Team findById(int id){
+        return instances.get(id-1);
     }
-    public String getMember2() {
-        return member2;
+    public void update(String teamName) {
+        this.teamName = teamName;
     }
-    public String getMember3() {
-        return member3;
-    }
-    public static ArrayList<Team> getMemberList() {
-        return allMembers;
-    }
-
-
-    public static ArrayList<Team> allMembers() {
-        return allMembers;
-    }
-
-
-
-    public void setMember(String member) {
-        this.member1 = member;
-    }
-
-//    public void addMember(String member) {
-//        String newMember = member1;
-//        allMembers.add(member1);
-//    }
 }
-
