@@ -13,7 +13,16 @@ public class App {
         staticFileLocation("/public");
 
 
-        //show a home page with all teams
+        //show a home page (make an about page
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ArrayList<Team> teams = Team.getTeamList();
+            model.put("teams", teams);
+            return new ModelAndView(model, "home.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        //show a home page (make an about page
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<Team> teams = Team.getTeamList();
@@ -22,12 +31,20 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        //get: show new team form
+        //show new team form
         get("/posts/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newpost-form.hbs");
         }, new HandlebarsTemplateEngine());
 
+
+//        //show list
+//        get("/", (req, res) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            ArrayList<Team> teams = Team.getTeamList();
+//            model.put("teams", teams);
+//            return new ModelAndView(model, "index.hbs");
+//        }, new HandlebarsTemplateEngine());
 
         // post: process new post form
         post("/posts/new", (request, response) -> { //URL to make new post on POST route
@@ -42,16 +59,6 @@ public class App {
             model.put("post", newTeam);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
-
-
-//        //show all posts (teams added)
-//        get("/", (request, response) -> {
-//            Map<String, Object> model = new HashMap<String, Object>();
-//            ArrayList<Team> teams = Team.getTeamList();
-//            model.put("teams", teams);
-//
-//            return new ModelAndView(model, "index.hbs");
-//        }, new HandlebarsTemplateEngine());
 
 
         //get: show an individual post
@@ -74,46 +81,25 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-//        //update a team
-//            post("/teams/:id/update", (request, res) -> {
-//                Map<String, Object> model = new HashMap<>();
-//                String nameOfTeam = request.queryParams("nameOfTeam");
-//                int idOfPostToEdit = Integer.parseInt(request.params("id"));
-//                Team editTeams = Team.findById(idOfPostToEdit);
-//                editTeams.update(nameOfTeam);
-//                res.redirect("/");
-//                return null;
-//
-//            });
+        //show all posts (teams added)
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            ArrayList<Team> teams = Team.getTeamList();
+            model.put("teams", teams);
+
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
-        //add a team member
-//        get("/teams/:id/addMember", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            return new ModelAndView(model, "member-form.hbs");
-//        }, new HandlebarsTemplateEngine());
-
-        //all members on a team
-//        get("/members/:id/update", (req, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            int idOfMemberToEdit = Integer.parseInt(req.params("id"));
-//            Member memberAdded = Member.findById(idOfMemberToEdit);
-//            model.put("editMembers", memberAdded);
-//            return new ModelAndView(model, "membersonteam.hbs");
-//        }, new HandlebarsTemplateEngine());
-
-
-        //update member
-//        post("/teams/:id/update", (request, res) -> {
-//            Map<String, Object> model = new HashMap<>();
-//            String name = request.queryParams("name");
-//            int age = Integer.parseInt(request.queryParams("age"));
-//            String description = request.queryParams("description");
-//            int idOfPostToEdit = Integer.parseInt(request.params("id"));
-//            Member editMember = Member.findById(idOfPostToEdit);
-//            editMember.update(name, age, description);
-//            res.redirect("/");
+        //delete
+//        get("/post/:id/delete", (request,response)-> {
+//            int idOfTeamToDelete = Integer.parseInt(request.params("id")); //pull id - must match route segment
+//            Team.deleteById(idOfTeamToDelete);
+//            response.redirect("/");
 //            return null;
 //        });
+
+
+
     }
 }

@@ -1,0 +1,16 @@
+{{#partial "content"}}
+
+   <h1>The most up to date Hack-A-Thon database!</h1>
+
+   {{#if posts}}
+       {{#each posts }} <!--loop-->
+        <p>Team:</p>
+        <p>{{ content }}<a href="/posts/{{id}}">read more...</a></p>
+               {{/each}}
+   {{else}} <!--no posts!-->
+    <p>See the teams!</p>
+   {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

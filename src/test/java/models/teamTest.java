@@ -49,13 +49,13 @@ public class teamTest {
 //    }
 
 
-//    @Test
-//    public void updateChangesPostContent() throws Exception {
-//        Team team = setupNewTeam();
-//        team.update("Alice", "Ava", "Beth", "Angel");
-//        assertEquals("Ava" , team.getMember2());
-//
-//    }
+    @Test
+    public void updateChangesPostContent() throws Exception {
+        Team team = setupNewTeam();
+        team.update("Alice", "Ava", "Beth", "Angel");
+        assertEquals("Ava" , team.getMember2());
+
+    }
 
     @Test
     public void getId_postsInstantiateWithAnID_1() throws Exception {
@@ -67,7 +67,7 @@ public class teamTest {
     @Test
     public void findReturnsCorrectPost() throws Exception {
         Team team = setupNewTeam();
-        assertEquals(3, Team.findById(team.getId()).getId());
+        assertEquals(1, Team.findById(team.getId()).getId());
     }
 
 
